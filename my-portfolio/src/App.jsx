@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './App.css';
-import j from './assets/hi.jpg'
 import i from './assets/i.jpg'
+import jeni from './assets/jeni.jpg'
 import html from './assets/html.png'
 import css from './assets/css.png'
 import javascript from './assets/javascript.png'
@@ -20,6 +20,12 @@ import vcard from './assets/vcard.jpeg'
 import f from './assets/findyway.jpeg'
 import mg from './assets/mongodb.png'
 import e from './assets/express.png'
+import snake from './assets/snake.png'
+import mem from './assets/mem.png'
+import netflix from './assets/netflix.webp'
+import todo from './assets/todo.webp'
+import puzzle from './assets/puzzle.png'
+import paint from './assets/paint.webp'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faCode, faPlane, faFilm, faPaintBrush, faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedin, faInstagram } from '@fortawesome/free-brands-svg-icons';
@@ -43,13 +49,11 @@ useEffect(() => {
     { threshold: 0.2 }
   );
 
-  // Observe sections and cards
   if (aboutSection) observer.observe(aboutSection);
   skillsCards.forEach((card) => observer.observe(card));
   projectCards.forEach((card) => observer.observe(card));
   if (contactSection) observer.observe(contactSection);
 
-  // Cleanup on unmount
   return () => {
     if (aboutSection) observer.unobserve(aboutSection);
     skillsCards.forEach((card) => observer.unobserve(card));
@@ -73,6 +77,7 @@ useEffect(() => {
           <li><a href="#about">About</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
+          <li><a href="#miniProject">Mini Projects</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -89,7 +94,7 @@ useEffect(() => {
           </div>
           <div className="hero-right">
             <div className="bg-skew"></div>
-            <img src={j} alt="jeniffer" />
+            <img src={jeni} alt="jeniffer" />
           </div>
         </section>
       </div>
@@ -197,6 +202,31 @@ useEffect(() => {
   </div>
 </section>
 
+<section id="miniProject" className="projects-section">
+  <h2>Mini Projects</h2>
+  <div className="projects-grid">
+    {[
+      { src: netflix, title: 'NetFlix Landing Page', tech: 'React.js', link: '#' },
+      { src: todo, title: 'ToDo App', tech: 'React.js, React Native', link: '#' },
+      { src: mem, title: 'Memory Game', tech: 'HTML, CSS, JavaScript', link: '#' },
+      { src: snake, title: 'Snake Game', tech: 'HTML, CSS, JavaScript', link: '#' },
+      { src: puzzle, title: 'Puzzle Game', tech: 'React.js', link: '#' },
+      { src: paint, title: 'Painting Website', tech: 'React.js', link: '#' },
+    ].map((project, index) => (
+      <div
+        className="project-card"
+        key={index}
+        style={{ transitionDelay: `${index * 0.2}s` }}
+      >
+        <img src={project.src} alt={project.title} />
+        <div className="project-info">
+          <h3>{project.title}</h3>
+          <p>{project.tech}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
 
 <section id="contact" className="contact-section">
   <div className="container">

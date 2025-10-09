@@ -156,7 +156,7 @@ body {
   font-weight: 600;
   margin-bottom: 30px;
   color: #111;
-    opacity: 0;
+  opacity: 0;
   transform: scale(0.8);
   animation: textPop 1s ease forwards;
   animation-delay: 2.2s;
@@ -224,7 +224,7 @@ body {
   border-radius: 50%;   
   border: 4px solid #fff; 
   box-shadow: 0 4px 12px rgba(0,0,0,0.2); 
-    opacity: 0;
+  opacity: 0;
   transform: scale(0.5) rotate(-10deg);
   animation: zoomIn 1.2s ease forwards, float 4s ease-in-out infinite;
   animation-delay: 1.5s;
@@ -240,6 +240,7 @@ body {
   0%, 100% { transform: translateY(0) scale(1); }
   50% { transform: translateY(-15px) scale(1.02); }
 }
+
 .bg-skew {
   position: absolute;
   top: 0;
@@ -255,6 +256,91 @@ body {
 @keyframes skewSlide {
   to {
     transform: skewX(-15deg) translateX(0);
+  }
+}
+
+@media (max-width: 991px) {
+  .hero {
+    flex-direction: column-reverse; /* Keep text above image by default */
+    text-align: center;
+    padding: 60px 5%;
+  }
+
+  .hero-left,
+  .hero-right {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-left {
+    margin-bottom: 40px;
+  }
+
+  .bg-skew {
+    display: none;
+  }
+}
+
+/* 📱 Mobile (up to 768px): Image first */
+@media (max-width: 768px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-right {
+    order: -1; /* 🪄 Image first */
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-right img {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .hero-left {
+    order: 1;
+    margin: 0;
+  }
+    .buttons {
+    margin-top: 15px;
+    margin-bottom: 0; /* remove extra space below buttons */
+    padding-bottom: 0;
+  }
+}
+
+/* 📱 Small Mobile (up to 480px) */
+@media (max-width: 480px) {
+  .hero {
+    padding: 40px 10px;
+  }
+
+  .hero-left h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-right img {
+    width: 220px;
+    height: 220px;
+  }
+
+  .buttons {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .btns {
+    padding: 10px 18px;
+    font-size: 14px;
+    width: auto;
   }
 }
 /* About Section */
@@ -694,7 +780,7 @@ body {
 }
 
 @media (max-width: 991px) {
-  .hero {
+  /* .hero {
     flex-direction: column;
     text-align: center;
     padding: 60px 5%;
@@ -712,7 +798,7 @@ body {
 
   .bg-skew {
     display: none;
-  }
+  } */
 
   .navbar {
     padding: 15px 20px;
@@ -789,7 +875,7 @@ body {
     font-size: 85%;
   }
 
-  .hero {
+  /* .hero {
     padding: 40px 10px;
   }
 
@@ -805,7 +891,7 @@ body {
   .btn {
     padding: 10px 18px;
     font-size: 14px;
-  }
+  } */
 
   .about-img img {
     width: 90%;
@@ -858,14 +944,14 @@ body {
     grid-template-columns: 1fr;
   }
 
-  .hero-left h1 {
+  /* .hero-left h1 {
     font-size: 1.6rem;
   }
 
   .hero-right img {
     width: 200px;
     height: 200px;
-  }
+  } */
 
   .project-card {
     height: 160px;
@@ -883,8 +969,8 @@ body {
 }
 
 @media (max-width: 768px) {
-  .hero-right {
-    display: none; /* hide hero image on mobile */
+  /* .hero-right {
+    display: none; 
   }
 
   .hero-left {
@@ -903,7 +989,7 @@ body {
 
   .buttons {
     margin-bottom: 0;
-  }
+  } */
 
   /* Swap About image to j.jpg in responsive */
   .about-img img {
@@ -928,10 +1014,104 @@ body {
     max-width: 100%;
   }
 
-  /* Mobile-specific About image */
   .about-img img {
-    content: url('./assets/i.jpg'); /* j image */
+    content: url('./assets/i.jpg'); 
     width: 200px;
     height: auto;
   }
 }
+@media (max-width: 991px) {
+  .hero {
+    flex-direction: column-reverse; /* Default order for tablet */
+    text-align: center;
+    padding: 60px 5%;
+  }
+}
+
+/* ✅ Mobile: Make hero image appear first */
+@media (max-width: 768px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    /* padding: 40px 10px; */
+    min-height: auto;
+    margin: 0;
+  }
+
+  .hero-right {
+    order: -1; 
+    margin-bottom: 20px;
+  }
+
+  .hero-right img {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .hero-left {
+    order: 1;
+    padding: 0;
+    margin: 0;
+  }
+}
+.mini-projects-section {
+  padding: 80px 20px;
+  background-color: #f8f9fa;
+  text-align: center;
+}
+
+.mini-projects-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: #222;
+}
+
+.mini-projects-section .projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.mini-projects-section .project-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.mini-projects-section .project-card:hover {
+  transform: translateY(-8px);
+}
+/* ✅ Fix extra space between Hero and About section */
+@media (max-width: 768px) {
+  .hero {
+    padding: 40px 10px 20px; /* Reduced bottom padding */
+    min-height: auto;        /* Remove forced full height */
+    margin-bottom: 0;        /* Remove gap before About section */
+  }
+
+  .hero-left {
+    margin-bottom: 20px; /* slight gap between text & image */
+  }
+
+  body {
+    padding-top: 70px; /* slightly smaller offset for navbar */
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 30px 10px 10px; /* even tighter spacing for small screens */
+  }
+
+  .hero-left {
+    margin-bottom: 15px;
+  }
+}
+
+
+
